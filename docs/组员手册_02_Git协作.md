@@ -44,16 +44,21 @@
 
 ## 三、完整流程（照着敲）
 
-### 第 0 步：确认在仓库目录、在 main 上
+### 第 0 步：确认在仓库目录、在 main 上，而且是最新的
 
 ```bash
 cd /d/CODE/Algorithm-graph
+git checkout main        # 确保你在 main 上
+git pull origin main     # 把别人已经合并的改动拉下来（这步不能省）
 git status
 ```
 
 应该看到：`On branch main` + `nothing to commit, working tree clean`
 
 **如果显示 `not a git repository`** → 你不在仓库目录里，`cd` 回去。
+
+> ⚠️ **`git pull` 这步千万别省**。你基于三天前的 main 开分支，别人这几天合并的东西你都没有，
+> 等你最后合并时必然多撞一次冲突。**开工前先同步**，这是最省事的习惯。
 
 ---
 
