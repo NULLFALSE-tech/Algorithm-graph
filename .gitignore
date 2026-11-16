@@ -1,0 +1,42 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# ---- 编辑器 ----
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+
+# ---- 系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 临时产物 ----
+*.tmp
+*.log
+_build/
+_out/
+# 截图要进仓库（README 引用 docs/截图_*.png），不能 ignore
+~$*
+
+# ---- 编译中间产物（验证 C 源码时会生成） ----
+*.o
+*.obj
+*.exe
+a.out
+
+# ---- 本项目生成物（由 python app.py 现场渲染，不进版本库）----
+# _site/ = python app.py --export _site 导出的静态站，其中 img/ 是 data/imgs 的副本
+# _shot/ = 截图脚本的临时输出
+_site/
+_shot/
+
+# ⛔ data/ 绝对不能 ignore —— 76 个 .c 源码 + 6 个 JSON 是可 diff 的数据源
+# ⛔ data/imgs/ 绝对不能 ignore —— 87 张原理图是唯一图片源
+# ⛔ eg/ 绝对不能 ignore —— 它是程序本体（Python 源代码）

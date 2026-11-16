@@ -1,0 +1,8 @@
+# 统一换行：库里存 LF，Windows 检出时 .c/.h 用 CRLF（记事本能正常显示）
+* text=auto
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.c text eol=crlf
+*.h text eol=crlf
