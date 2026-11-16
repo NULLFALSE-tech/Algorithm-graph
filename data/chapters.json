@@ -1,0 +1,67 @@
+{
+ "chapter_computational_complexity": [
+  "复杂度分析",
+  0,
+  "先学会量「跑多快」"
+ ],
+ "chapter_array_and_linkedlist": [
+  "数组与链表",
+  1,
+  "两块最基础的积木"
+ ],
+ "chapter_stack_and_queue": [
+  "栈与队列",
+  1,
+  "给数组加上进出规矩"
+ ],
+ "chapter_hashing": [
+  "哈希表",
+  1,
+  "用空间换查找速度"
+ ],
+ "chapter_tree": [
+  "二叉树",
+  2,
+  "从一条线长成一棵树"
+ ],
+ "chapter_heap": [
+  "堆",
+  2,
+  "专门伺候最大最小值"
+ ],
+ "chapter_graph": [
+  "图",
+  2,
+  "任意连点的网络"
+ ],
+ "chapter_searching": [
+  "查找算法",
+  3,
+  "在有序里省掉一半"
+ ],
+ "chapter_sorting": [
+  "排序算法",
+  3,
+  "把无序变有序"
+ ],
+ "chapter_divide_and_conquer": [
+  "分治",
+  4,
+  "拆成小问题再合起来"
+ ],
+ "chapter_backtracking": [
+  "回溯",
+  4,
+  "试错之后能撤销"
+ ],
+ "chapter_dynamic_programming": [
+  "动态规划",
+  4,
+  "把算过的答案记下来"
+ ],
+ "chapter_greedy": [
+  "贪心",
+  4,
+  "每步都挑眼前最好的"
+ ]
+}
