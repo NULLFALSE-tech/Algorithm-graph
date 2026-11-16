@@ -29,7 +29,8 @@ def search_form(q, action, interactive):
                 '回项目根目录运行 <code>python app.py</code> 即可使用</div>')
     return ('<form class="search-form" method="get" action="%s" style="flex:1;display:flex">'
             '<input class="search" name="q" value="%s" '
-            'placeholder="搜算法名、文件名、关键词，回车筛选" autocomplete="off">'
+            'placeholder="搜算法名、文件名、关键词，回车筛选" autocomplete="off" '
+            'onkeydown="if(event.key===\'Escape\'){this.value=\'\';this.form.submit();}">'
             '</form>') % (action, esc(q))
 
 
