@@ -1,0 +1,48 @@
+name: 数据校验
+
+# 每次 PR 和推 main 都跑一遍：数据不自洽就直接拦下来。
+# 这是全组唯一的客观裁判——你的代码有没有问题，不看嘴，看这个勾。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 环境信息
+        run: |
+          python --version
+          ls -la
+          du -h index.html data
+
+      - name: 数据自洽性校验（11 项）
+        run: python tools/verify.py -v
+
+      - name: 分工覆盖检查（76 条必须不重不漏）
+        run: |
+          python tools/whoami.py | tail -5
+          python tools/whoami.py | grep -q "76 条不重不漏" || (echo "::error::分工表与数据不一致"; exit 1)
+
+      - name: 讲义完成度（只报告，不拦）
+        continue-on-error: true
+        run: python tools/whoami.py --todo | grep -c "待写" || true
+
+      - name: 禁止改 index.html 的检查
+        run: |
+          # 只在 PR 上检查：如果这次 PR 动了 index.html，提醒必须在 PR 说明里写理由
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -c '^index.html$' || true)
+            if [ "$CHANGED" -gt 0 ]; then
+              echo "::warning::这个 PR 改了 index.html —— 它是成品，改动必须在 PR 说明里写清理由"
+            fi
+          fi
