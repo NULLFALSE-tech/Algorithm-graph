@@ -200,9 +200,12 @@ def list_html(ar, items=None):
     """按章节分组的源码清单。items 传过滤后的子集，不传就全显示。"""
     pool = ar.core_list() if items is None else items
     if not pool:
-        return '<div class="note">没有匹配的源码，换个关键词试试。</div>'
+        return ('<div class="note">没有匹配的源码。可能是关键词打错了，'
+                '也可能是把范围缩到了某一章——<a href="/all">看全部 76 条</a>再试一次。</div>')
 
-    out = []
+    out = ['<div class="count-note" style="font:400 13px system-ui,-apple-system,sans-serif;'
+           'color:var(--ink3);margin:0 0 10px">共 %d 条，当前显示 %d 条</div>'
+           % (len(ar.algos), len(pool))]
     for ch in ar.chapter_keys:
         meta = ar.chapters[ch]
         group = [a for a in pool if a.get("ch") == ch]
