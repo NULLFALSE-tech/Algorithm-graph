@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""查我的分工：负责哪份文档 + 负责哪几章算法。
+"""查我的分工：负责哪份文档 + 负责哪几章算法 + 第二阶段要补什么。
 
 用法：
     python tools/whoami.py            # 六个人总览 + 覆盖性自检
@@ -8,7 +8,8 @@
     python tools/whoami.py P4 --todo  # 只看还没写讲义的（讲义是加分项）
 
 这是「分工可验证」的实现：分工表不是嘴上说说，脚本能算出来。
-分工口径与 docs/任务书.md 完全一致，两处必须同步改。
+第一阶段分工（DUTY）口径与 docs/任务书.md 一致；
+第二阶段任务（NEXT）口径与 docs/组员手册_03_任务卡.md 一致。改的时候两边一起改。
 """
 
 import argparse
@@ -43,6 +44,23 @@ DUTY = {
     # 检索页现在是 eg/render.py 里的 search / list_html / chips_html 三处
     "P6": ("焦明远", "检索页 + 列表页", "eg/render.py",
            ["chapter_dynamic_programming"]),
+}
+
+# 第二阶段任务（2026-11-18 起）：代号 -> (任务, 目标文件)
+# 第一阶段是「把项目从零做出来」，第二阶段是「补齐课程要求的缺口」。
+# 任务细则、提示词、验收命令全在 docs/组员手册_03_任务卡.md，这里只留一句索引。
+# 章节归属（DUTY 第四项）第二阶段不变，仍用于讲义的覆盖性自检。
+NEXT = {
+    "P1": ("组长：合并全部 PR、录演示视频（组内只他录）",
+           "docs/组员手册_03_任务卡.md"),
+    "P2": ("需求文档补「二、知识原理」1200–1500 字",
+           "docs/Project_Requirements_and_Design.md"),
+    "P3": ("需求文档补「四、可视化设计」1000–1300 字（输入→处理→展示→交互）",
+           "docs/Project_Requirements_and_Design.md"),
+    "P4": ("README 补「主要功能」6 条 + 全仓「数据结构」口径巡检", "README.md"),
+    "P5": ("演示视频分镜与口播稿 + 全组提交规范巡检", "docs/演示脚本.md"),
+    "P6": ("tools/verify.py 加 2 项：图片引用有效性 / 需求文档六块齐全",
+           "tools/verify.py"),
 }
 
 
@@ -85,6 +103,10 @@ def report(algos, who=None, only_todo=False):
 
         print("\n%s · %s · %s" % (key, name, role))
         print("  你负责的文档：%s  [%s]" % (doc, doc_state(doc)))
+        if key in NEXT:
+            task, target = NEXT[key]
+            print("  第二阶段任务：%s" % task)
+            print("  第二阶段改：%s  [%s]" % (target, doc_state(target)))
         print("  你负责的章节：%d 章 / %d 条算法（讲义已写 %d，未写 %d —— 讲义是加分项）"
               % (len(chs), len(mine), len(mine) - len(todo), len(todo)))
         print("-" * 68)
@@ -121,6 +143,12 @@ def report(algos, who=None, only_todo=False):
     print("\n文档进度（W1 四步走的产出）：")
     for key, (name, _, doc, _) in DUTY.items():
         print("  %s  %-6s %-38s %s" % (key, name, doc, doc_state(doc)))
+
+    print("\n第二阶段任务（细则见 docs/组员手册_03_任务卡.md）：")
+    for key, (name, _, _, _) in DUTY.items():
+        task, target = NEXT[key]
+        print("  %s  %-6s %s" % (key, name, task))
+        print("      改 %-44s [%s]" % (target, doc_state(target)))
 
 
 def main():
