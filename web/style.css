@@ -1,0 +1,100 @@
+:root{--bg:#fbfbfc;--panel:#fff;--ink:#1f2328;--ink2:#5b6470;--ink3:#8a929c;--line:#e3e6ea;--line2:#eef0f3;--accent:#2b5cd9;--soft:#eef3ff;--code:#f7f8fa}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.7 "Segoe UI","Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+code,pre,.mono{font-family:Consolas,"SF Mono",Menlo,monospace}
+.hero{background:var(--panel);border-bottom:1px solid var(--line)}
+.hero-in{max-width:1480px;margin:0 auto;padding:30px 28px 22px}
+.kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+h1{font:600 28px/1.3 Georgia,"Songti SC","Noto Serif SC",serif;margin:8px 0 8px}
+.lede{font-size:14px;color:var(--ink2);max-width:900px;margin:0 0 14px}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--ink2);background:#fff}
+.stat b{color:var(--ink);font-weight:600;font-size:14px;margin-right:4px}
+.bar{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.bar-in{max-width:1480px;margin:0 auto;padding:10px 28px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:220px;max-width:340px;border:1px solid var(--line);border-radius:6px;padding:7px 10px;background:#fff;outline:none}
+.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:7px 15px;font-size:13px;color:var(--ink2)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--ink);color:#fff}
+.hint{font-size:12px;color:var(--ink3)}
+.wrap{max-width:1480px;margin:0 auto;padding:18px 28px 80px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;margin-bottom:8px}
+.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:16px;padding:4px 12px;font-size:12px;color:var(--ink2)}
+.chip.on{background:var(--soft);border-color:var(--accent);color:var(--accent)}
+.graphcard{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:auto}
+svg#kg{display:block;width:100%;min-width:1080px;height:auto}
+svg#kg .lt{font:600 12px "Segoe UI",sans-serif;fill:var(--ink3)}
+svg#kg .col{fill:#f4f6f8}
+svg#kg .edge{fill:none;stroke:#d9dee5;stroke-width:1.2}
+svg#kg .edge.far{stroke:#e8ecf1;stroke-dasharray:3 3}
+svg#kg .edge.hi,svg#kg .edge.far.hi{stroke:var(--accent);stroke-width:2;stroke-dasharray:none}
+svg#kg .node{cursor:pointer}
+svg#kg .node rect{fill:#fff;stroke:var(--line);stroke-width:1}
+svg#kg .node:hover rect,svg#kg .node.on rect{stroke:var(--accent);fill:var(--soft)}
+svg#kg .node.dim{opacity:.28}
+svg#kg .nt{font:600 13px "Segoe UI","Microsoft YaHei",sans-serif;fill:var(--ink)}
+svg#kg .ns{font:10px Consolas,monospace;fill:var(--ink3)}
+svg#kg .node.on .nt{fill:var(--accent)}
+.legend{font-size:12px;color:var(--ink3);padding:10px 16px;border-top:1px solid var(--line2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
+.card{border:1px solid var(--line);background:#fff;border-radius:8px;padding:14px;cursor:pointer;text-align:left}
+.card:hover{border-color:var(--accent)}
+.card h3{margin:0 0 2px;font:600 15px/1.4 "Segoe UI","Microsoft YaHei",sans-serif}
+.card .fn{font:11px Consolas,monospace;color:var(--ink3);margin:0 0 8px}
+.card p{margin:0 0 10px;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border:1px solid var(--line);border-radius:4px;color:var(--ink2);margin-right:5px}
+.tag.core{border-color:var(--accent);color:var(--accent);background:var(--soft)}
+.tag.ok{border-color:#3f8f6b;color:#2f7556}
+.tag.no{border-color:#c9a04a;color:#8a6a20}
+h2.sec{font:600 18px/1.4 Georgia,"Songti SC",serif;margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.mask{position:fixed;inset:0;background:rgba(24,28,34,.36);z-index:50;display:none}
+.mask.on{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(680px,100%);background:var(--bg);z-index:60;box-shadow:-8px 0 32px rgba(24,28,34,.14);transform:translateX(102%);transition:transform .22s ease;overflow-y:auto}
+.drawer.on{transform:none}
+.dhead{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);padding:18px 24px 14px;z-index:2}
+.dhead .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dhead h2{margin:0;font:600 21px/1.35 Georgia,"Songti SC",serif}
+.dhead .fn{font:12px Consolas,monospace;color:var(--ink3);margin-top:4px}
+.close{border:1px solid var(--line);background:#fff;border-radius:6px;width:32px;height:32px;display:grid;place-items:center;flex:none}
+.close:hover{border-color:var(--accent)}
+.dbody{padding:20px 24px 70px}
+.brief{font-size:14px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;padding:12px 14px;margin:0 0 22px}
+h4{font:600 14px/1.5 "Segoe UI","Microsoft YaHei",sans-serif;margin:24px 0 10px;display:flex;align-items:center;gap:8px}
+h4 .n{font:11px Consolas,monospace;color:var(--ink3);font-weight:400}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+figure{margin:0;border:1px solid var(--line);background:#fff;border-radius:6px;overflow:hidden}
+figure img{display:block;width:100%;max-height:320px;object-fit:contain;background:#fff;cursor:zoom-in}
+figcaption{font:11px Consolas,monospace;color:var(--ink3);padding:6px 10px;border-top:1px solid var(--line2);word-break:break-all}
+.codebox{border:1px solid var(--line);border-radius:6px;background:var(--code);overflow:hidden}
+.codebar{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--panel);border-bottom:1px solid var(--line);font:11px Consolas,monospace;color:var(--ink3)}
+.codebar button{border:1px solid var(--line);background:#fff;border-radius:4px;padding:3px 10px;font-size:11px}
+.codebar button:hover{border-color:var(--accent);color:var(--accent)}
+pre.code{margin:0;padding:12px 0;overflow-x:auto;font:12px/1.65 Consolas,Menlo,monospace;max-height:460px;overflow-y:auto}
+pre.code .row{display:block;white-space:pre;padding:0 14px 0 0}
+pre.code .row:hover{background:#eef1f5}
+pre.code .ln{display:inline-block;width:44px;text-align:right;margin-right:14px;color:#aab1ba;user-select:none}
+.t-cm{color:#8a929c}.t-str{color:#9a5a20}.t-kw{color:#2b5cd9}.t-num{color:#a13b58}
+table.st{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+table.st th{background:#f4f5f7;text-align:left;padding:8px 10px;font-weight:600;font-size:12px;color:var(--ink2);border-bottom:1px solid var(--line)}
+table.st td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:top}
+table.st tr:last-child td{border-bottom:0}
+table.st td:first-child{white-space:nowrap;color:var(--ink2);width:22%}
+.explain p{margin:0 0 11px;font-size:13.5px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:13px;color:var(--ink2)}
+.note b{color:var(--ink);font-weight:600}
+pre.out{margin:0;background:#1f2328;color:#e6e9ee;border-radius:6px;padding:12px 14px;font:12px/1.7 Consolas,Menlo,monospace;white-space:pre-wrap;word-break:break-all}
+pre.out .empty{color:#98a1ad}
+.runbox{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.runbox code{display:block;font-size:12px;background:var(--code);padding:9px 10px;border-radius:4px;margin:8px 0;white-space:pre-wrap;word-break:break-all}
+.runbox p{margin:6px 0 0;font-size:12px;color:var(--ink2)}
+.foot{max-width:1480px;margin:0 auto;padding:20px 28px 60px;font-size:12px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot b{color:var(--ink2);font-weight:600}
+#lb{position:fixed;inset:0;background:rgba(20,24,30,.86);z-index:90;display:none;place-items:center;padding:24px;cursor:zoom-out}
+#lb.on{display:grid}
+#lb img{max-width:100%;max-height:100%;background:#fff;border-radius:6px}
+@media(max-width:760px){.hero-in,.bar-in,.wrap,.foot{padding-left:16px;padding-right:16px}.drawer{width:100%}}
