@@ -29,7 +29,8 @@ def search_form(q, action, interactive):
                 '回项目根目录运行 <code>python app.py</code> 即可使用</div>')
     return ('<form class="search-form" method="get" action="%s" style="flex:1;display:flex">'
             '<input class="search" name="q" value="%s" '
-            'placeholder="搜算法名、文件名、关键词，回车筛选" autocomplete="off">'
+            'placeholder="搜算法名、文件名、关键词，回车筛选" autocomplete="off" '
+            'onkeydown="if(event.key===\'Escape\'){this.value=\'\';this.form.submit();}">'
             '</form>') % (action, esc(q))
 
 
@@ -200,9 +201,12 @@ def list_html(ar, items=None):
     """按章节分组的源码清单。items 传过滤后的子集，不传就全显示。"""
     pool = ar.core_list() if items is None else items
     if not pool:
-        return '<div class="note">没有匹配的源码，换个关键词试试。</div>'
+        return ('<div class="note">没有匹配的源码。可能是关键词打错了，'
+                '也可能是把范围缩到了某一章——<a href="/all">看全部 76 条</a>再试一次。</div>')
 
-    out = []
+    out = ['<div class="count-note" style="font:400 13px system-ui,-apple-system,sans-serif;'
+           'color:var(--ink3);margin:0 0 10px">共 %d 条，当前显示 %d 条</div>'
+           % (len(ar.algos), len(pool))]
     for ch in ar.chapter_keys:
         meta = ar.chapters[ch]
         group = [a for a in pool if a.get("ch") == ch]
