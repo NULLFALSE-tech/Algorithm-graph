@@ -1,41 +1,247 @@
 # C 语言算法知识图谱
 
+把《hello-algo》的 76 个算法示例整理成一张可检索、可下钻、可验证的知识图谱，运行一条命令就能在浏览器里看清「一个算法在整门课里处在哪一层、依赖谁、源码长什么样」。
+
 > 《计算机科学导论》课程小组项目 · **13 班 6 组** · 2026 秋
+>
+> 规模：**5 层 / 13 章 / 76 个算法 / 7174 行 C 源码 / 87 张原理图**
+>
+> 仓库地址：**https://github.com/NULLFALSE-tech/Algorithm-graph**
 
-把 hello-algo 的 76 个算法示例整理成一张可检索、可下钻的知识图谱。
+## 一、项目简介
 
-> 本 README 为**骨架版**，等代码与文档齐了再补：安装步骤、运行截图、目录说明、贡献者名单、开源协议。
+一个用 **Python 标准库**实现的本地 Web 程序：启动后在浏览器打开，可以看到 76 个算法按「度量 → 线性结构 → 非线性结构 → 查找排序 → 算法策略」五层铺开成一张有向图，点任意节点展开该算法的原理图、C 源码（逐行着色 + 行号）和依赖关系。
 
-## 这是什么
+**给谁用**：刚学完 C、正要进数据结构的同学。他们不缺资料，缺的是「这个算法在整张知识网里站在哪、先学什么、代码里哪几行是核心」。
 
-一个本地跑的 Web 程序：启动后在浏览器里看到 76 个算法按难度分层铺开，点开能看到原理图、C 源码和依赖关系。
+**课程定位**：围绕**复杂度度量（第 0 层）**与**查找排序（第 3 层）**展开，属于课程要求中「计算机基础知识可视化」的范围。对应的导论课知识点：
 
-## 怎么跑
+| 图谱内容 | 对应的导论知识点 |
+|---|---|
+| 第 0 层「度量」 | 算法复杂度、时间复杂度与空间复杂度的度量方法 |
+| 第 1–2 层「线性/非线性结构」 | 数据的逻辑结构与物理存储（顺序存储 vs 链式存储） |
+| 第 3 层「查找与排序」 | 典型算法的时间复杂度对比（O(n log n) 与 O(n²)） |
+| 依赖边 | 有向图与拓扑序：先修关系必须无环才能成立 |
+| 源码逐行展示 | 从高级语言到机器执行的中间表示（词法单元与语法结构） |
+
+## 二、快速开始
+
+### 2.1 环境要求
+
+| 项目 | 要求 | 说明 |
+|---|---|---|
+| 操作系统 | **Windows 10 / Windows 11**（macOS、Linux 同样可跑） | 无任何系统级依赖 |
+| Python | **3.8 及以上** | 实测 3.13.14；**纯标准库，不装第三方包** |
+| 浏览器 | Chrome / Edge / Firefox 任一 | 用于查看页面 |
+| Git | 2.30 及以上 | 仅拉代码时需要 |
+
+> 为什么是 3.8+：`dict[str, ...]` 这类泛型注解在 3.9 才进标准库，项目里统一加了 `from __future__ import annotations`，所以 3.8 也能跑；代码没有用到 `removeprefix`、`math.lcm` 等 3.9+ 才有的函数。
+
+### 2.2 安装步骤
+
+**第 1 步：确认 Python 已安装**
+
+打开 PowerShell（Win + X → 终端），输入：
+
+```powershell
+python -V
+```
+
+应输出 `Python 3.8.x` 或更高。若提示「不是内部或外部命令」，到 [python.org](https://www.python.org/downloads/) 下载安装，**安装时务必勾选 `Add Python to PATH`**。
+
+**第 2 步：拿到代码**
 
 ```powershell
 git clone git@github.com:NULLFALSE-tech/Algorithm-graph.git
 cd Algorithm-graph
+```
+
+或直接在 GitHub 页面点 `Code → Download ZIP` 解压。
+
+**第 3 步：跑起来**
+
+```powershell
 python app.py
 ```
 
-## 现在到哪一步了
+看到下面这段就成功了，浏览器会自动打开：
 
-| 阶段 | 状态 |
+```
+算法知识图谱 已启动
+  算法 76 条 / 精讲 33 条 / 章节 13 个 / 图片 87 张
+  地址 http://127.0.0.1:8000/
+  停止：Ctrl+C
+```
+
+停止服务按 `Ctrl + C`。
+
+### 2.3 界面预览
+
+**首页：5 层图谱**（33 个精讲节点按难度从左到右铺开，连线是「先学谁」的依赖）
+
+![首页：五层算法图谱](docs/截图_首页图谱.png)
+
+**详情页：源码即讲义**（原版原理图 + 逐行着色的 C 源码 + 这段代码怎么跑）
+
+![详情页：数组基本操作](docs/截图_详情源码.png)
+
+> 两张截图均为实际运行截取，未做美化。截图命令：`msedge --headless --window-size=1440,900 --screenshot=out.png http://127.0.0.1:8000/`
+
+### 2.4 其他命令
+
+| 命令 | 作用 |
 |---|---|
-| 仓库初始化、.gitignore、许可 | 完成 |
-| 数据抽取（76 条算法 / 87 张图） | 进行中 |
-| 程序本体 | 未开始 |
-| 需求文档 | 未开始 |
-| AI 使用记录 | 未开始 |
+| `python app.py` | 启动服务（默认 8000 端口，自动开浏览器） |
+| `python app.py --port 8001` | 8000 被占用时换端口 |
+| `python app.py --no-browser` | 启动但不自动开浏览器 |
+| `python app.py --export _site` | 导出成纯静态站（不再需要 Python 也能看） |
+| `python tools/verify.py` | 数据自洽性检查，应输出 `PASS 12 / FAIL 0` |
+| `python tests/test_data.py` | 单元测试，应输出 `OK`（10 个测试） |
+| `python tools/whoami.py P4` | 查 P4 负责哪几条算法 |
 
-## 目录
+### 2.5 常见问题
 
-待代码落地后补。
+| 现象 | 原因与解决 |
+|---|---|
+| `Address already in use` / `端口被占用` | 换端口：`python app.py --port 8001` |
+| 双击 `app.py` 窗口一闪就没了 | 不要双击，在 PowerShell 里 `cd` 到项目目录再 `python app.py` |
+| 终端里中文显示成乱码 | PowerShell 执行 `chcp 65001` 切到 UTF-8 后重跑 |
+| 页面能打开但图片是空白 | 确认 `data/imgs/` 目录存在（clone 不完整时会出现） |
+| `python` 命令不存在 | 试 `py -3 app.py`；或重装 Python 并勾选 Add to PATH |
 
-## 数据来源
+## 三、项目结构
 
-算法与源码来自开源项目 [hello-algo](https://github.com/krahets/hello-algo)（MIT 许可）。
+```
+Algorithm-graph/
+├── app.py                  # 入口薄壳，等价于 python -m eg.app
+├── eg/                     # 程序本体（Python 源代码，137 KB）
+│   ├── store.py            #   数据层：读 data/ 下 JSON 与 .c，不认识 HTML
+│   ├── graph.py            #   布局层：把「层+章+依赖边」算成屏幕坐标
+│   ├── codeview.py         #   着色层：C 源码逐行高亮，单遍扫描不套娃
+│   ├── render.py           #   渲染层：用 Python 拼出整站 HTML
+│   └── app.py              #   服务层：标准库 http.server 路由
+├── data/                   # 可 diff 的数据源（协作的核心）
+│   ├── algos.json          #   76 条算法元数据，一条一行
+│   ├── codes/              #   76 个 .c 源文件，按 13 章分目录
+│   ├── chapters.json       #   章节层级
+│   ├── deps.json           #   算法间依赖边
+│   ├── layers.json         #   五层定义
+│   ├── imgs.index.json     #   图片索引（含 sha1）
+│   ├── meta.json           #   全局统计
+│   └── imgs/               #   87 张官方原理图（唯一图片源，5.9 MB）
+├── web/style.css           # 样式表，不塞进 Python 里
+├── tools/                  # 辅助脚本（extract / verify / whoami）
+├── tests/test_data.py      # 10 个单元测试
+├── docs/                   # 需求文档、AI 使用记录、踩坑记录
+└── .github/workflows/      # CI：每次 push 自动跑 verify + tests
+```
 
-## 许可
+## 四、技术方案
 
-MIT，见 [LICENSE](LICENSE)。
+**核心改动：从「8.37 MB 静态单文件」变成「Python 现场渲染」**
+
+| | 旧版 | 现在 |
+|---|---|---|
+| 首页体积 | `index.html` **8.37 MB** | **16.4 KB**（缩小 510 倍） |
+| 图片 | 87 张 base64 内嵌在 HTML 里 | 独立文件外链，浏览器缓存 |
+| 数据流 | 数据塞进 `<script id="DATA">`，浏览器 JS 拼 DOM | Python 在服务端拼好 HTML，前端只剩几十行做悬停高亮 |
+| 增删一个算法 | 改 8 MB 文件，diff 无法阅读 | 改 `data/algos.json` 一行 |
+| 环境 | 双击即可 | `python app.py`（无第三方依赖） |
+
+**为什么用标准库 `http.server` 而不是 Flask**：课程演示要在老师的机器上跑，Flask 是第三方包，装不上或校园网下载慢都会让「一条命令跑起来」直接失败。标准库零依赖，`python app.py` 在全新机器上也能一次成功。
+
+**为什么服务端渲染**：教材知识点本身是「层级 + 依赖」的结构，Python 里算完坐标直接输出 SVG，比浏览器端算更直观，也让 `tests/` 能用断言锁住「生成的 SVG 与设计稿像素级一致」。
+
+## 五、自检
+
+改完数据一定要跑这两条，CI 也会跑同样的命令：
+
+```powershell
+python tools/verify.py        # 期望 PASS 12 / FAIL 0
+python tests/test_data.py     # 期望 OK（10 tests）
+```
+
+`verify.py` 检查 12 项：字段完整性、id 唯一、章节归属、层级合法、图片引用、依赖图无环、源文件齐全、行数一致性、编译运行状态、备注可用、渲染完整、接口可用。**任何一项不过都不许合并。**
+
+## 六、分支与协作记录
+
+`main` 分支始终可运行、可演示。每次改动走「开分支 → 提交 → 合并回 `main`（`--no-ff`，保留分支拓扑）」，
+**不允许直接往 `main` 提交**（除首次初始化）。每次合并前必须 `python tools/verify.py` 全绿 —— CI 也拦这一道。
+
+| 分支 | 负责人 | 内容 | 合并方式 |
+|---|---|---|---|
+| `main` | P1 邓宇轩 | 基线、仓库初始化、最终整合 | 保护分支 |
+| `chore/repo-spec` | P1 邓宇轩 | `.gitignore`、PR 模板、CI 工作流、任务书 | `--no-ff` 合并 |
+| `feat/data-extract` | P1 邓宇轩 | 从单文件 HTML 抽 76 条元数据、剥离 87 张 SVG、搬运 76 个 `.c` | `--no-ff` 合并 |
+| `feat/core-render` | P1 邓宇轩 | `eg/` 五个模块 + `app.py` + 样式表 | `--no-ff` 合并 |
+| `docs/req-01` | P2 王瑞 | 需求文档第一章「背景与目标」 | `--no-ff` 合并 |
+| `docs/req-02` | P3 郭子琪 | 需求文档第二章「功能与数据」 | `--no-ff` 合并（**含冲突解决**） |
+| `docs/req-03` | P4 张超明 | 需求文档第三章「技术方案与验收」+ 踩坑记录 | `--no-ff` 合并 |
+| `feat/search` | P6 焦明远 | 列表页计数提示、搜索框快捷键与无结果引导 | `--no-ff` 合并 |
+| `docs/ai-log` | P5 吴家溢 | `AI_Prompts_Log.md` 骨架与六人记录 | `--no-ff` 合并 |
+| `feat/verify-tests` | P1 邓宇轩 | `verify.py` 12 项、10 个单元测试、分工查询脚本 | `--no-ff` 合并 |
+| `docs/readme` | P1 邓宇轩 | README 定稿：截图、贡献者、协作记录 | `--no-ff` 合并 |
+
+### 6.1 那次真实的合并冲突
+
+`docs/req-01` 与 `docs/req-02` 是从同一个基线分出去的并行分支，两人都要在
+`docs/Project_Requirements_and_Design.md` 的**同一张目录表里加自己那一行**，且两行相邻：
+
+```
+<<<<<<< HEAD
+| 一、背景与目标 | P2 王瑞 | 已完成 |
+=======
+| 二、功能与数据 | P3 郭子琪 | 已完成 |
+>>>>>>> docs/req-02
+```
+
+**解决方式**：两人改的其实不是同一个单元格，是「同一张表相邻两行」，所以**两行都保留**，
+只是顺序按章节号排。合并后在 PR 里留了说明，过程记录写进 `docs/踩坑记录.md` 第 6 条。
+
+> 顺带记一个教训：正因为 `algos.json` 采用「一条算法一行」的写法，**同一行改两个字段就必然冲突**。
+> 好处是冲突范围永远可控（不会出现整文件冲突），坏处是六人并行时要约定「谁改哪个字段」。
+
+### 6.2 提交信息格式
+
+统一 `type(scope): 一句话说明`，动词开头、不加句号：
+
+| 前缀 | 用于 | 例 |
+|---|---|---|
+| `feat` | 新功能 | `feat(检索): 列表页加计数提示` |
+| `fix` | 修 bug | `fix(app): 端口被占用时自动顺延` |
+| `docs` | 文档 | `docs(需求): 写第二章 功能与数据` |
+| `chore` | 杂务 | `chore(ci): 加 PR 模板与自动校验` |
+| `test` | 测试 | `test: 补 2 个数据一致性用例` |
+
+## 七、团队分工与贡献者
+
+| 代号 | 姓名 | 分工 | 主要交付物 | 所在分支 |
+|---|---|---|---|---|
+| P1 | **邓宇轩**（组长） | 仓库与流程、数据抽取、程序本体、集成与合并 | `eg/`、`app.py`、`README.md`、`tools/` | `chore/repo-spec`、`feat/data-extract`、`feat/core-render`、`feat/verify-tests`、`docs/readme` |
+| P2 | **王瑞** | 需求文档第一章「背景与目标」 | `docs/Project_Requirements_and_Design.md` §1 | `docs/req-01` |
+| P3 | **郭子琪** | 需求文档第二章「功能与数据」 | 同上 §2 | `docs/req-02` |
+| P4 | **张超明** | 需求文档第三章「技术方案与验收」（先遣员） | 同上 §3、`docs/踩坑记录.md` | `docs/req-03` |
+| P5 | **吴家溢** | AI 使用记录汇总（6 人 18 次交互） | `docs/AI_Prompts_Log.md` | `docs/ai-log` |
+| P6 | **焦明远** | 检索页与列表页 | `eg/render.py` 的 `search` / `list_html` | `feat/search` |
+
+提交记录可用两条命令核对（作者名与上表一致）：`git shortlog -sne` 看六人各提交了多少次，
+`git log --graph --oneline` 看分支拓扑与 10 个 `--no-ff` 合并节点。
+
+分工可按脚本复核，不靠嘴说：
+
+```powershell
+python tools/whoami.py        # 六人总览 + 76 条是否不重不漏
+python tools/whoami.py P4     # 只看 P4 负责的章与算法
+```
+
+## 八、数据来源
+
+算法与源码来自开源项目 [hello-algo](https://github.com/krahets/hello-algo)（MIT 许可）。本仓库做的是**结构化整理与可视化**，不修改原算法实现。
+
+## 九、许可
+
+本项目代码采用 **MIT License**，全文见 [LICENSE](LICENSE)。
+
+原算法讲解、C 源码与原理图版权归 **hello-algo** 项目作者（krahets）所有，遵循其 MIT 许可；
+本仓库仅做结构化整理与可视化，用于课程学习，不作商业用途。
+
