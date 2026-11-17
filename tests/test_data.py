@@ -92,16 +92,18 @@ class TestData(unittest.TestCase):
             self.assertIn(str(a.get("compile")), ("OK", "FAIL"), "%s 的 compile 字段异常" % a["id"])
 
     def test_文档骨架存在(self):
-        """职责文档和提示词是六个人开工的前提，删了就没人知道自己该干什么。"""
+        """任务卡与交付文档是六个人开工的前提，删了就没人知道自己该干什么。
+
+        旧的职责分工与组员手册已于 2026-11-17 归档到仓库外
+        （结课作业/_归档_旧口径_2026-11-17/docs/），现行口径只认这五张卡。
+        """
         must = [
-            "docs/提示词_六个角色.md",
-            "docs/组员手册_00_总览与流程图.md",
-            "docs/组员手册_01_环境准备.md",
-            "docs/组员手册_02_Git协作.md",
-            "docs/组员手册_03_任务卡.md",
+            "docs/AI_Prompts_Log.md",
+            "docs/Project_Requirements_and_Design.md",
+            "docs/踩坑记录.md",
             "README.md",
         ]
-        must += ["docs/职责分工_P%d_%s.md" % (n, s)
+        must += ["docs/组员任务卡_2026-11-21/P%d_%s_任务卡.md" % (n, s)
                  for n, s in ((2, "王瑞"), (3, "郭子琪"), (4, "张超明"),
                               (5, "吴家溢"), (6, "焦明远"))]
         for rel in must:
