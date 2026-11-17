@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 必须是 0。默认 fetch-depth: 1 是浅克隆，拿不到 merge-base，
+          # 下面 `git diff origin/main...HEAD` 会报 "no merge base" / "unknown revision"
+          # 并被 `|| true` 吞掉 → 检查恒为 0 条，等于没写。
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -23,7 +28,10 @@ jobs:
         run: |
           python --version
           ls -la
-          du -h index.html data
+          # 只统计真实存在的目录。⛔ 不要写成 du index.html ——
+          # index.html 是 app.py --export 的产物（落 _site/，已 gitignore），仓库里从来没有这个文件，
+          # du 找不到会 exit 1，整条 job 直接红。
+          du -sh data docs eg tools web tests
 
       - name: 数据自洽性校验（11 项）
         run: python tools/verify.py -v
