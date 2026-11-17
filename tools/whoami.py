@@ -8,7 +8,7 @@
     python tools/whoami.py P4 --todo  # 只看还没写讲义的（讲义是加分项）
 
 这是「分工可验证」的实现：分工表不是嘴上说说，脚本能算出来。
-第一阶段分工（DUTY）口径与 docs/任务书.md 一致；
+第一阶段分工（DUTY）口径与 README 第七节、需求文档末尾的分工表一致；
 第二阶段任务（NEXT）口径与 docs/组员手册_03_任务卡.md 一致。改的时候两边一起改。
 """
 
@@ -25,7 +25,7 @@ LECTURE = ROOT / "docs" / "讲义"          # 讲义是可选的加分项，目�
 # 文档维度决定谁交什么；章节维度决定后面谁修数据、谁写讲义。
 # ⚠️ 需求文档按课程要求只有一个文件（Project_Requirements_and_Design.md），
 #    P2/P3/P4 三人分章同写一份文档 —— 这正是那次真实合并冲突的来源，不是笔误。
-# ⚠️ 改这里必须同步改 README 第六节、docs/任务书.md 与需求文档末尾的分工表
+# ⚠️ 改这里必须同步改 README 第七节与需求文档末尾的分工表
 DUTY = {
     "P1": ("邓宇轩", "组长 / 服务层与集成", "README.md",
            ["chapter_computational_complexity"]),
@@ -136,7 +136,7 @@ def report(algos, who=None, only_todo=False):
     print("  重复认领：%s" % (dup if dup else "无"))
     print("  无人认领：%s" % (miss if miss else "无"))
     if dup or miss:
-        print("  ⚠️ 分工表有问题，改 DUTY，同步改 docs/任务书.md")
+        print("  ⚠️ 分工表有问题，改 DUTY，同步改 README 第七节与需求文档分工表")
     else:
         print("  ✅ 76 条不重不漏，分工表与数据一致")
 

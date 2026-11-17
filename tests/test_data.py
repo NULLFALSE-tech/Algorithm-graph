@@ -92,8 +92,19 @@ class TestData(unittest.TestCase):
             self.assertIn(str(a.get("compile")), ("OK", "FAIL"), "%s 的 compile 字段异常" % a["id"])
 
     def test_文档骨架存在(self):
-        """任务书和提示词是六个人开工的前提，删了就没人知道自己该干什么。"""
-        for rel in ("docs/任务书.md", "docs/提示词_六个角色.md", "README.md"):
+        """职责文档和提示词是六个人开工的前提，删了就没人知道自己该干什么。"""
+        must = [
+            "docs/提示词_六个角色.md",
+            "docs/组员手册_00_总览与流程图.md",
+            "docs/组员手册_01_环境准备.md",
+            "docs/组员手册_02_Git协作.md",
+            "docs/组员手册_03_任务卡.md",
+            "README.md",
+        ]
+        must += ["docs/职责分工_P%d_%s.md" % (n, s)
+                 for n, s in ((2, "王瑞"), (3, "郭子琪"), (4, "张超明"),
+                              (5, "吴家溢"), (6, "焦明远"))]
+        for rel in must:
             self.assertTrue((ROOT / rel).exists(), "缺了 %s" % rel)
 
 

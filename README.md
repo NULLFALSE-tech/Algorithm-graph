@@ -174,7 +174,7 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | 分支 | 负责人 | 内容 | 合并方式 |
 |---|---|---|---|
 | `main` | P1 邓宇轩 | 基线、仓库初始化、最终整合 | 保护分支 |
-| `chore/repo-spec` | P1 邓宇轩 | `.gitignore`、PR 模板、CI 工作流、任务书 | `--no-ff` 合并 |
+| `chore/repo-spec` | P1 邓宇轩 | `.gitignore`、PR 模板、CI 工作流、任务书（第二阶段已移除，内容并入组员手册与五份职责分工） | `--no-ff` 合并 |
 | `feat/data-extract` | P1 邓宇轩 | 从单文件 HTML 抽 76 条元数据、剥离 87 张 SVG、搬运 76 个 `.c` | `--no-ff` 合并 |
 | `feat/core-render` | P1 邓宇轩 | `eg/` 五个模块 + `app.py` + 样式表 | `--no-ff` 合并 |
 | `docs/req-01` | P2 王瑞 | 需求文档第一章「背景与目标」 | `--no-ff` 合并 |
