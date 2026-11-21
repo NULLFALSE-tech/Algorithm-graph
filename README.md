@@ -171,6 +171,9 @@ python tests/test_data.py     # 期望 OK（10 tests）
 `main` 分支始终可运行、可演示。每次改动走「开分支 → 提交 → 合并回 `main`（`--no-ff`，保留分支拓扑）」，
 **不允许直接往 `main` 提交**（除首次初始化）。每次合并前必须 `python tools/verify.py` 全绿 —— CI 也拦这一道。
 
+> 下表 10 条分支已于 2026-11-19 全部合并进 `main` 后删除，仓库现只保留 `main`。
+> 名称保留下来是为了对上 `git log --graph` 里的 10 个 `--no-ff` 合并节点与对应 PR —— 记录不删，分支可删。
+
 | 分支 | 负责人 | 内容 | 合并方式 |
 |---|---|---|---|
 | `main` | P1 邓宇轩 | 基线、仓库初始化、最终整合 | 保护分支 |
@@ -221,11 +224,14 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | 代号 | 姓名 | 分工 | 主要交付物 | 所在分支 |
 |---|---|---|---|---|
 | P1 | **邓宇轩**（组长） | 仓库与流程、数据抽取、程序本体、集成与合并 | `eg/`、`app.py`、`README.md`、`tools/` | `chore/repo-spec`、`feat/data-extract`、`feat/core-render`、`feat/verify-tests`、`docs/readme` |
-| P2 | **王瑞** | 需求文档第一章「背景与目标」 | `docs/Project_Requirements_and_Design.md` §1 | `docs/req-01` |
-| P3 | **郭子琪** | 需求文档第二章「功能与数据」 | 同上 §2 | `docs/req-02` |
-| P4 | **张超明** | 需求文档第三章「技术方案与验收」（先遣员） | 同上 §3、`docs/踩坑记录.md` | `docs/req-03` |
+| P2 | **王瑞** | 需求文档「一、背景与目标」 | `docs/Project_Requirements_and_Design.md` §1 | `docs/req-01` |
+| P3 | **郭子琪** | 需求文档「三、主要功能与数据」 | 同上 §3 | `docs/req-02` |
+| P4 | **张超明** | 需求文档「五、技术方案与验收」（先遣员） | 同上 §5、`docs/踩坑记录.md` | `docs/req-03` |
 | P5 | **吴家溢** | AI 使用记录汇总（6 人 18 次交互） | `docs/AI_Prompts_Log.md` | `docs/ai-log` |
 | P6 | **焦明远** | 检索页与列表页 | `eg/render.py` 的 `search` / `list_html` | `feat/search` |
+
+> 章号为 2026-11-16 重编号后的现行编号（原二/三 → 现三/五），第二阶段补齐的章节见 §7.1。
+> 「所在分支」列是第一阶段的历史分支名，均已于 2026-11-19 合并后删除，见 §6。
 
 提交记录可用两条命令核对（作者名与上表一致）：`git shortlog -sne` 看六人各提交了多少次，
 `git log --graph --oneline` 看分支拓扑与 10 个 `--no-ff` 合并节点。
