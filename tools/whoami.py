@@ -42,7 +42,7 @@ DUTY = {
            ["chapter_divide_and_conquer", "chapter_greedy", "chapter_backtracking"]),
     # P6 原来分的是 web/explore.html，改为 Python 渲染后这个文件已删除，
     # 检索页现在是 eg/render.py 里的 search / list_html / chips_html 三处
-    "P6": ("焦明远", "检索页 + 列表页", "eg/render.py",
+    "P6": ("焦名远", "检索页 + 列表页", "eg/render.py",
            ["chapter_dynamic_programming"]),
 }
 

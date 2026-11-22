@@ -105,7 +105,7 @@ class TestData(unittest.TestCase):
         ]
         must += ["docs/组员任务卡_2026-11-21/P%d_%s_任务卡.md" % (n, s)
                  for n, s in ((2, "王瑞"), (3, "郭子琪"), (4, "张超明"),
-                              (5, "吴家溢"), (6, "焦明远"))]
+                              (5, "吴家溢"), (6, "焦名远"))]
         for rel in must:
             self.assertTrue((ROOT / rel).exists(), "缺了 %s" % rel)
 

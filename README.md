@@ -192,7 +192,7 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | `docs/req-01` | P2 王瑞 | 需求文档第一章「背景与目标」 | `--no-ff` 合并 |
 | `docs/req-02` | P3 郭子琪 | 需求文档第二章「功能与数据」 | `--no-ff` 合并（**含冲突解决**） |
 | `docs/req-03` | P4 张超明 | 需求文档第三章「技术方案与验收」+ 踩坑记录 | `--no-ff` 合并 |
-| `feat/search` | P6 焦明远 | 列表页计数提示、搜索框快捷键与无结果引导 | `--no-ff` 合并 |
+| `feat/search` | P6 焦名远 | 列表页计数提示、搜索框快捷键与无结果引导 | `--no-ff` 合并 |
 | `docs/ai-log` | P5 吴家溢 | `AI_Prompts_Log.md` 骨架与六人记录 | `--no-ff` 合并 |
 | `feat/verify-tests` | P1 邓宇轩 | `verify.py` 12 项、10 个单元测试、分工查询脚本 | `--no-ff` 合并 |
 | `docs/readme` | P1 邓宇轩 | README 定稿：截图、贡献者、协作记录 | `--no-ff` 合并 |
@@ -205,7 +205,7 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | `feature/rep-visual` | P3 郭子琪 | 需求文档新增「四、可视化设计」（分支名把 `req` 误拼成 `rep`，内容无误） | PR #2 已合并（`f9dcd94`），已删除 |
 | `feat/readme-mainfunc` | P4 张超明 | README 补「主要功能」6 条 + 开头口径修正 | PR #3 已合并（`3b0514e`，合入 `850a3af`），2026-11-22 删除 |
 | `feature/demo-script` | P5 吴家溢 | 新建 `docs/演示脚本.md` | 协作者权限已开通（`cthvme50`），分支待建 |
-| `feature/p6-conflict` | P6 焦明远 | §7.1 贡献说明 + 一次真实冲突处理 | 协作者权限已开通（`JMY-0828`），分支待建 |
+| `feature/p6-conflict` | P6 焦名远 | §7.1 贡献说明 + 一次真实冲突处理 | 协作者权限已开通（`JMY-0828`），分支待建 |
 
 ### 6.1 那次真实的合并冲突
 
@@ -271,7 +271,7 @@ P4 既然没动 §7.1，这个前提就不成立。重排为：P6 先按自己�
 | P3 | **郭子琪** | 需求文档「三、主要功能与数据」 | 同上 §3 | `docs/req-02` |
 | P4 | **张超明** | 需求文档「五、技术方案与验收」（先遣员） | 同上 §5、`docs/踩坑记录.md` | `docs/req-03` |
 | P5 | **吴家溢** | AI 使用记录汇总（6 人 18 次交互） | `docs/AI_Prompts_Log.md` | `docs/ai-log` |
-| P6 | **焦明远** | 检索页与列表页 | `eg/render.py` 的 `search` / `list_html` | `feat/search` |
+| P6 | **焦名远** | 检索页与列表页 | `eg/render.py` 的 `search` / `list_html` | `feat/search` |
 
 > 章号为 2026-11-16 重编号后的现行编号（原二/三 → 现三/五），第二阶段补齐的章节见 §7.1。
 > 「所在分支」列是第一阶段的历史分支名，均已于 2026-11-19 合并后删除，见 §6。
@@ -285,7 +285,7 @@ P4 既然没动 §7.1，这个前提就不成立。重排为：P6 先按自己�
 | P3 | 郭子琪 | `guoziqi-higher` | Write |
 | P4 | 张超明 | `shayubei` | Write |
 | P5 | 吴家溢 | `cthvme50` | Write |
-| P6 | 焦明远 | `JMY-0828` | Write |
+| P6 | 焦名远 | `JMY-0828` | Write |
 
 `git shortlog -sne` 显示的是上面这串账号名，不是中文真名 —— 对不上时查这张表。
 
@@ -312,7 +312,7 @@ python tools/whoami.py P4     # 只看 P4 负责的章与算法
 | P3 | 郭子琪 | 补「四、可视化设计」输入→处理→展示→交互，1000–1300 字 | 同上 |
 | P4 | 张超明 | README 补「主要功能」6 条 + 全仓「数据结构」口径巡检 | `README.md` |
 | P5 | 吴家溢 | 演示视频分镜与口播稿 + 全组提交规范巡检 | `docs/演示脚本.md` |
-| P6 | 焦明远 | 自检加 2 项：图片引用有效性 / 需求文档六块齐全 | `tools/verify.py` |
+| P6 | 焦名远 | 自检加 2 项：图片引用有效性 / 需求文档六块齐全 | `tools/verify.py` |
 
 `python tools/whoami.py P2` 会把两个阶段的任务一起打印出来，不用记。
 
