@@ -204,7 +204,7 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | `feature/req-knowledge` | P2 王瑞 | 需求文档重编号 + 新增「二、知识原理」 | PR #1 已合并（`311109d`），已删除 |
 | `feature/rep-visual` | P3 郭子琪 | 需求文档新增「四、可视化设计」（分支名把 `req` 误拼成 `rep`，内容无误） | PR #2 已合并（`f9dcd94`），已删除 |
 | `feat/readme-mainfunc` | P4 张超明 | README 补「主要功能」6 条 + 开头口径修正 | PR #3 已合并（`3b0514e`，合入 `850a3af`），2026-11-22 删除 |
-| `feature/demo-script` | P5 吴家溢 | 新建 `docs/演示脚本.md` | PR #4 已合并（`8493606`，合入 `786a074`），2026-11-22 删除 |
+| `feature/demo-script` | P5 吴家溢 | 新建 `docs/演示脚本.md`，后按实现订正 12 处 | PR #4 已合并（`8493606`，合入 `786a074`）；PR #5 已合并（`22acc18`，合入 `82e5c87`），已删除 |
 | `feature/p6-conflict` | P6 焦名远 | §7.1 贡献说明 + 一次真实冲突处理 | 协作者权限已开通（`JMY-0828`），分支待建 |
 
 > P5 的演示稿合并后，P1 逐条对着 `render.py` / `codeview.py` / `app.py` 核对，修掉 **10 处**与实现不符的描述
