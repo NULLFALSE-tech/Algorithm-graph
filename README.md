@@ -205,7 +205,7 @@ python tests/test_data.py     # 期望 OK（10 tests）
 | `feature/rep-visual` | P3 郭子琪 | 需求文档新增「四、可视化设计」（分支名把 `req` 误拼成 `rep`，内容无误） | PR #2 已合并（`f9dcd94`），已删除 |
 | `feat/readme-mainfunc` | P4 张超明 | README 补「主要功能」6 条 + 开头口径修正 | PR #3 已合并（`3b0514e`，合入 `850a3af`），2026-11-22 删除 |
 | `feature/demo-script` | P5 吴家溢 | 新建 `docs/演示脚本.md` | 待提交 |
-| `feature/p6-conflict` | P6 焦明远 | §7.1 贡献说明 + 一次真实冲突处理 | 待提交 |
+| `feature/p6-conflict` | P6 焦明远 | §7.1 贡献说明 + 一次真实冲突处理 | 协作者权限已开通（`JMY-0828`），分支待建 |
 
 ### 6.1 那次真实的合并冲突
 
@@ -275,6 +275,19 @@ P4 既然没动 §7.1，这个前提就不成立。重排为：P6 先按自己�
 
 > 章号为 2026-11-16 重编号后的现行编号（原二/三 → 现三/五），第二阶段补齐的章节见 §7.1。
 > 「所在分支」列是第一阶段的历史分支名，均已于 2026-11-19 合并后删除，见 §6。
+
+六人的 GitHub 账号对照（2026-11-22 核对，除 P5 外均已接受邀请、权限 Write）：
+
+| 代号 | 姓名 | GitHub 账号 | 仓库权限 |
+|---|---|---|---|
+| P1 | 邓宇轩 | `NULLFALSE-tech` | Owner |
+| P2 | 王瑞 | `wangrui-maker` | Write |
+| P3 | 郭子琪 | `guoziqi-higher` | Write |
+| P4 | 张超明 | `shayubei` | Write |
+| P5 | 吴家溢 | 待补 | — |
+| P6 | 焦明远 | `JMY-0828` | Write |
+
+`git shortlog -sne` 显示的是上面这串账号名，不是中文真名 —— 对不上时查这张表。
 
 提交记录可用两条命令核对（作者名与上表一致）：`git shortlog -sne` 看六人各提交了多少次，
 `git log --graph --oneline` 看分支拓扑与 10 个 `--no-ff` 合并节点。
